@@ -103,4 +103,3 @@ for predic_result in pr:
 
 print('sum error',sum)
 
-# далее оформляем все это в виде отдельного класса neural.py
