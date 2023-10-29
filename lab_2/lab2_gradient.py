@@ -33,7 +33,7 @@ def errors(result, expected_class):
     expected_vector = np.array([0, 0, 0])
     expected_vector[expected_class] = 1
     # считаем ошибку по MSE для каждого класса и складываем
-    sum_errors = sum(square(result - expected_vector)) / 3
+    sum_errors = sum(square(result - expected_vector))
     return (sum_errors, np.array([result - expected_vector]))
 
 
