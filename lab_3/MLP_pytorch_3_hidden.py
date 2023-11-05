@@ -19,7 +19,7 @@ class MLPptorch(nn.Module):
                                     nn.Linear(second_hidden_size, third_hidden_size),
                                     nn.ReLU(),
                                     nn.Linear(third_hidden_size, out_size),
-                                    nn.ReLU())
+                                    nn.Sigmoid())
 
     # прямой проход
     def forward(self, x):
