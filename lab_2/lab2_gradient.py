@@ -60,7 +60,7 @@ if __name__ == '__main__':
 
     ziped = zip(X, y)
     zipped_list = list(ziped)
-    epoch = 60
+    epoch = 100
 
     for i in range(epoch):
         sum_errors = 0
@@ -83,4 +83,25 @@ if __name__ == '__main__':
 
             W_1 = W_1 - gradient_step * de_dw1
             W_2 = W_2 - gradient_step * de_dw2
-        print('sumary errors', sum_errors)
+
+    print('sumary errors', sum_errors)
+    print('sumary errors mean', sum_errors / len(zipped_list))
+
+    correct = 0
+    incorrect = 0
+    for x_input, expected in zipped_list:
+        o1 = x_input @ W_1
+        o1_activated = vector_sigmoid_activation(o1)
+        o2 = o1_activated @ W_2
+        o2_activated = vector_sigmoid_activation(o2)
+        error, expected_vector = errors(o2_activated, expected)
+        sum_errors = sum_errors + error
+        if (np.argmax(o2_activated, axis=0) == expected):
+            correct += 1
+        else:
+            incorrect += 1
+
+    print('correct', correct)
+    print('incorrect', incorrect)
+
+
